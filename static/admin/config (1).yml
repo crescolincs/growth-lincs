@@ -1,35 +1,38 @@
-local_backend: true
-
 backend:
   name: github
-  repo: crescolincs/growth-lincs #path to your GitHub repository
+  repo: crescolincs/growth-lincs   # <-- update to your actual GitHub org/repo
   branch: main
-  base_url: https://smc.agrifood.pages.dev #url for Oauth app on Github Developer settings
-  auth_endpoint: /api/auth
-
-media_library:
-  name: cloudinary
-  config:
-    cloud_name: growthlincs
-    api_key: 911638456544281
-    multiple: false
-    output_filename_only: true
+  # If editors will authenticate via GitHub OAuth directly (not Netlify Identity),
+  # you'll need a small OAuth provider app — see note below the config.
 
 publish_mode: editorial_workflow
-logo_url: https://res.cloudinary.com/lincs/image/upload/v1716044699/invest-lincolnshire-logo.svg
 
+# ---------------------------------------------------------------------------
+# MEDIA STORAGE — pick ONE approach and delete/comment the other.
+# ---------------------------------------------------------------------------
 
-#media_folder: "" # Folder where user uploaded files should go
-#public_folder: ""
+# OPTION A: store images in the repo (simple, but repo grows with post count)
+media_folder: "static/images/uploads"
+public_folder: "/images/uploads"
+
+# OPTION B: Cloudinary (repo stays small; images served from Cloudinary's CDN)
+# Comment out the two lines above and uncomment this block instead.
+# media_library:
+#   name: cloudinary
+#   config:
+#     cloud_name: your-cloud-name
+#     api_key: your-api-key
+#     # no api_secret here — uploads use an unsigned preset or signed request
+#     # handled by Decap; never put your Cloudinary API secret in this file.
 
 collections:
 
   # ---------------------------------------------------------------
-  # GEGROWTH ARTICLES
+  # GENERAL POSTS
   # ---------------------------------------------------------------
-  - name: "articles"
-    label: "Growth Articles"
-    folder: "content/articles"
+  - name: "posts"
+    label: "General Posts"
+    folder: "content/posts"
     create: true
     slug: "{{slug}}"
     path: "{{slug}}/index"        # Hugo page-bundle style; drop this line if you use flat .md files
@@ -43,8 +46,8 @@ collections:
         name: "author"
         widget: "relation"
         collection: "authors"
-        search_fields: ["name"]
-        display_fields: ["name"]
+        search_fields: ["title"]
+        display_fields: ["title"]
         value_field: "{{slug}}"   # stores the author's slug, not the display name
         multiple: false
 
@@ -52,8 +55,8 @@ collections:
         name: "categories"
         widget: "relation"
         collection: "categories"
-        search_fields: ["categoryName"]
-        display_fields: ["categoryName"]
+        search_fields: ["title"]
+        display_fields: ["title"]
         value_field: "{{slug}}"
         multiple: true
         min: 1
@@ -77,7 +80,7 @@ collections:
         name: "display"
         widget: "boolean"
         default: true
-        hint: "Untick to hide this article from the live site without deleting it."
+        hint: "Untick to hide this post from the live site without deleting it."
 
       - { label: "Content", name: "body", widget: "markdown" }
 
@@ -108,7 +111,7 @@ collections:
         name: "display"
         widget: "boolean"
         default: true
-        hint: "Untick to hide this E-Bulletin from the live site without deleting it."
+
   # ---------------------------------------------------------------
   # AUTHORS (supporting data — used via Relation widget)
   # ---------------------------------------------------------------
@@ -119,9 +122,9 @@ collections:
     slug: "{{slug}}"
     path: "{{slug}}/index"
     extension: "md"
-    format: "frontmatter"
+    format: "yaml"
     fields:
-      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Name", name: "title", widget: "string" }
       - { label: "Role", name: "role", widget: "string", required: false }
       - { label: "Bio", name: "bio", widget: "text", required: false }
       # no `body` field needed — this collection only holds data, no long-form content
@@ -136,6 +139,6 @@ collections:
     slug: "{{slug}}"
     path: "{{slug}}/index"
     extension: "md"
-    format: "frontmatter"
+    format: "yaml"
     fields:
-      - { label: "Category Name", name: "categoryName", widget: "string" }
+      - { label: "Category Name", name: "title", widget: "string" }

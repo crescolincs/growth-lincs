@@ -1,0 +1,30 @@
+{{/*
+  layouts/_default/_markup/render-image.html
+
+  Markdown render hook: automatically rewrites every inline image in the
+  post body (inserted via Decap's markdown widget, sourced from Cloudinary)
+  to route through Cloudflare Image Resizing, instead of serving the raw
+  Cloudinary URL directly. Editors don't need to do anything differently —
+  this applies to every image in the body automatically.
+
+  .Destination = the raw image URL from the markdown ![alt](url)
+  .Text        = the alt text
+*/}}
+{{ $widths := slice 600 1000 1400 }}
+{{ $quality := 80 }}
+
+{{ $srcset := slice }}
+{{ range $w := $widths }}
+  {{ $url := printf "/cdn-cgi/image/width=%d,quality=%d,format=auto/%s" $w $quality .Destination }}
+  {{ $srcset = $srcset | append (printf "%s %dw" $url $w) }}
+{{ end }}
+
+{{ $fallback := printf "/cdn-cgi/image/width=%d,quality=%d,format=auto/%s" (index $widths 1) $quality .Destination }}
+
+<img
+  src="{{ $fallback }}"
+  srcset="{{ delimit $srcset ", " }}"
+  sizes="(min-width: 1000px) 1000px, 100vw"
+  alt="{{ .Text }}"
+  loading="lazy"
+>

@@ -1,0 +1,45 @@
+{{/*
+  Renders a responsive <img> using Cloudflare Image Resizing against an
+  external origin (e.g. a Cloudinary URL stored in front matter), so
+  Cloudflare handles resizing/caching/format-negotiation and Cloudinary
+  is only ever fetched once per unique variant.
+
+  Usage (e.g. in single.html for the heroImage field):
+    {{ partial "cf-image.html" (dict
+        "src" .Params.heroImage
+        "alt" .Params.heading
+        "widths" (slice 400 800 1200 1600)
+        "sizes" "(min-width: 1024px) 800px, 100vw"
+        "class" "hero-image"
+    ) }}
+
+  Keep "widths" to a small, FIXED, reused set across your templates —
+  each distinct width/quality/format combination counts as a separate
+  "unique transformation" against Cloudflare's monthly free allowance.
+*/}}
+{{ $src := .src }}
+{{ if $src }}
+  {{ $alt := .alt | default "" }}
+  {{ $widths := .widths | default (slice 400 800 1200) }}
+  {{ $sizes := .sizes | default "100vw" }}
+  {{ $quality := .quality | default 80 }}
+  {{ $class := .class | default "" }}
+
+  {{ $srcset := slice }}
+  {{ range $w := $widths }}
+    {{ $url := printf "/cdn-cgi/image/width=%d,quality=%d,format=auto/%s" $w $quality $src }}
+    {{ $srcset = $srcset | append (printf "%s %dw" $url $w) }}
+  {{ end }}
+
+  {{ $fallbackWidth := index $widths (sub (len $widths) 1) }}
+  {{ $fallback := printf "/cdn-cgi/image/width=%d,quality=%d,format=auto/%s" $fallbackWidth $quality $src }}
+
+  <img
+    src="{{ $fallback }}"
+    srcset="{{ delimit $srcset ", " }}"
+    sizes="{{ $sizes }}"
+    alt="{{ $alt }}"
+    loading="lazy"
+    {{ with $class }}class="{{ . }}"{{ end }}
+  >
+{{ end }}
