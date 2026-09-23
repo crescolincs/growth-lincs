@@ -43,8 +43,8 @@ collections:
         name: "author"
         widget: "relation"
         collection: "authors"
-        search_fields: ["name"]
-        display_fields: ["name"]
+        search_fields: ["title"]
+        display_fields: ["title"]
         value_field: "{{slug}}"   # stores the author's slug, not the display name
         multiple: false
 
@@ -52,8 +52,8 @@ collections:
         name: "categories"
         widget: "relation"
         collection: "categories"
-        search_fields: ["categoryName"]
-        display_fields: ["categoryName"]
+        search_fields: ["title"]
+        display_fields: ["title"]
         value_field: "{{slug}}"
         multiple: true
         min: 1
@@ -121,7 +121,7 @@ collections:
     extension: "md"
     format: "frontmatter"
     fields:
-      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Name", name: "title", widget: "string" }
       - { label: "Role", name: "role", widget: "string", required: false }
       - { label: "Bio", name: "bio", widget: "text", required: false }
       # no `body` field needed — this collection only holds data, no long-form content
@@ -138,4 +138,4 @@ collections:
     extension: "md"
     format: "frontmatter"
     fields:
-      - { label: "Category Name", name: "categoryName", widget: "string" }
+      - { label: "Category Name", name: "title", widget: "string" }
