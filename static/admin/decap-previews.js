@@ -231,4 +231,70 @@
   });
  
   CMS.registerPreviewTemplate("articles", PostPreview);
+
+    // ── EBulletin preview ────────────────────────────────────────────────────
+  // Mirrors layouts for the ebulletin list page (list.html), which loops
+  // over the collection and renders each entry with .Params.display,
+  // .Params.title, .Params.screengrab and .Params.linkToEBulletin.
+  // NOTE: adjust the collection name in registerPreviewTemplate below
+  // ("ebulletins") if your config.yml uses a different name.
+ 
+  var ebulletinStyles = [
+    '.growth_ebulletin_list .card { height: 96%; }',
+    '.growth_ebulletin_list .card-header { padding: 2rem; }',
+    '.growth_ebulletin_list .card-header img { width: 100%; }',
+    '.growth_ebulletin_list a { text-decoration: none; }',
+    '.growth_ebulletin_list .card-body { display: flex; flex-direction: column; }',
+    '.growth_ebulletin_list .card-body h3 { font-size: 1.25rem; text-align: center; }',
+    '.growth_ebulletin_list .not-displayed-notice { color: #b02a37; font-weight: bold; margin-bottom: 1rem; }'
+  ].join('\n');
+ 
+  // Applies the same Cloudinary transform the Hugo template applies with
+  // {{ replaceRE `v\d+` "f_auto,q_auto,w_400,h_400,c_fill,g_north" $url2resize }}
+  function transformScreengrab(url) {
+    if (!url) return '';
+    return url.replace(/v\d+/, 'f_auto,q_auto,w_400,h_400,c_fill,g_north');
+  }
+ 
+  var EBulletinPreview = createClass({
+    render: function() {
+      var entry    = this.props.entry;
+      var getAsset = this.props.getAsset;
+      var params   = entry.get('data');
+ 
+      var display        = params.get('display');
+      var title           = params.get('title') || '';
+      var screengrab      = resolveImage(params.get('screengrab'), getAsset);
+      var linkToEBulletin = params.get('linkToEBulletin') || '#';
+      var thumbSrc         = transformScreengrab(screengrab);
+ 
+      return h('main', { id: 'main' },
+        h('style', {}, ebulletinStyles),
+        h('div', { className: 'container growth_ebulletin_list' },
+          h('div', { className: 'row' },
+            !display
+              ? h('p', { className: 'not-displayed-notice' },
+                  'This entry has "display" turned off and will not appear on the live list page.')
+              : null,
+            h('div', { className: 'col-12 col-lg-4 card-wrapper' },
+              h('a', { href: linkToEBulletin, className: 'external' },
+                h('div', { className: 'card shadow' },
+                  h('div', { className: 'card-header' },
+                    thumbSrc
+                      ? h('img', { src: thumbSrc, alt: title })
+                      : null
+                  ),
+                  h('div', { className: 'card-body justify-content-between' },
+                    h('h3', { className: 'm-0 text-green' }, title)
+                  )
+                )
+              )
+            )
+          )
+        )
+      );
+    }
+  });
+ 
+  CMS.registerPreviewTemplate("ebulletins", EBulletinPreview);
   

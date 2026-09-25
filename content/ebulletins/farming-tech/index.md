@@ -1,6 +1,6 @@
 ---
 title: Farming tech
-screengrab: https://res.cloudinary.com/growthlincs/image/upload/v1790257997/techonthefarm.jpg
+screengrab: https://res.cloudinary.com/growthlincs/image/upload/v1790345920/UKFV_38_1.png
 linkToEBulletin: https://ukfoodvalley.cmail19.com/t/r-e-tudullo-pltyuggu-jd/
 eBulletinDescription: "**Lincolnshire has long played a critical role in feeding
   the nation and protecting it. Now, through the strategic lens of UK Food

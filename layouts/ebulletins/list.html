@@ -1,31 +1,76 @@
 {{ define "main" }}
-<div class="container growth_ebulletin_list">
-  <div class="row">
-  <div class="col-12">
-  <h1>{{ .Title }}</h1>
-    
-    {{ range .Pages }}
-       <div>
-        {{ with .Params.screengrab }}
-          {{ $url := . }}
-             {{ with resources.GetRemote $url }}
-               {{ with .Resize "400x" }}
-                 <img src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="">
+<style>
+.section_header-50-50 {
+  background-color:#2d3137;
+padding:0}
+
+h1.text-sector-mid,.p-large {
+color:#fff}
+
+.section_header-50-50 .img-wrapper img {
+  width:98vw;
+object-fit:fill}
+
+.bgblack {
+  background-color:#2d3137;
+padding:0}
+
+.mt-sm-5 {
+margin-top:0 !important}
+
+
+.xcard {
+height:96%
+}
+.card-header{
+    padding: 2rem;
+    img {width:100%}
+}
+a {
+text-decoration:none
+}
+.card-body {
+  display:flex;
+flex-direction:column
+}
+.card-body h2 {
+  font-size:1.25rem;
+text-align:center
+}
+.download {
+  text-align:center;
+  color:#0a58ca
+}
+
+.download:hover {
+color:#4b83d8}
+
+</style>
+    <div class="container growth_ebulletin_list">
+      <div class="row">
+       <!-- <div class="col-12"> -->
+          <h1>{{ .Title }}</h1>      
+          {{ range .Pages }}
+               {{ if .Params.display }}
+                   <div class="col-12 col-lg-4 card-wrapper">
+                     <a href="{{ .Params.linkToEBulletin}}"  class="external">
+                       <div class="card shadow">
+                           <div class="card-header">
+                           {{ $url2resize := .Params.screengrab  }}
+                           {{ $transformedUrl := replaceRE `v\d+` "f_auto,q_auto,w_400,h_400,c_fill,g_north" $url2resize }}
+                             <img src="{{ $transformedUrl }}" alt="{{ .Params.title }}">
+                           </div>
+                           <div class="card-body justify-content-between">
+                               <h3 class="m-0 text-green">{{ .Params.title }}</h3>
+                           </div>
+                       </div>
+                     </a>
+                   </div>
                {{ end }}
-              {{ end }}
-        {{ end }}
-         
-         <p>{{ .Params.title }}</p>
-         <p>{{ .Params.publishDate | time.Format "January 2006" }}</p>
-         <button><a style="text-decoration: none;" href="{{ .RelPermalink }}">READ THIS ISSUE</a></button>
-
-
-
-         {{ .Summary }}
-         
-       </div>
-    {{ end }}
-  </div>
-  </div>
-</div>
+          {{ end }}
+        <!--</div>-->
+      </div>
+    </div>
 {{ end }}
+
+
