@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Categories on Lincolnshire is the UK location of choice for investing businesses in high-growth industry sectors. Invest Lincolnshire helps businesses to relocate, start-up or expand in Lincolnshire - more quickly, efficiently, and cost-effectively.</title>
+		<link>//localhost:1322/categories/</link>
+		<description>Recent content in Categories on Lincolnshire is the UK location of choice for investing businesses in high-growth industry sectors. Invest Lincolnshire helps businesses to relocate, start-up or expand in Lincolnshire - more quickly, efficiently, and cost-effectively.</description>
+		<generator>Hugo</generator>
+		<language>en-uk</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 24 Sep 2026 16:24:00 +0000</lastBuildDate>
+		
+			<atom:link href="//localhost:1322/categories/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Design</title>
+				<link>//localhost:1322/categories/design/</link>
+				<pubDate>Thu, 24 Sep 2026 16:24:00 +0000</pubDate>
+				<guid>//localhost:1322/categories/design/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>News</title>
+				<link>//localhost:1322/categories/news/</link>
+				<pubDate>Thu, 24 Sep 2026 16:24:00 +0000</pubDate>
+				<guid>//localhost:1322/categories/news/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Opinion</title>
+				<link>//localhost:1322/categories/opinion/</link>
+				<pubDate>Thu, 24 Sep 2026 16:24:00 +0000</pubDate>
+				<guid>//localhost:1322/categories/opinion/</guid>
+				<description></description>
+			</item>
+	</channel>
+</rss>

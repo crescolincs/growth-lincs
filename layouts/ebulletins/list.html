@@ -1,0 +1,31 @@
+{{ define "main" }}
+<div class="container growth_ebulletin_list">
+  <div class="row">
+  <div class="col-12">
+  <h1>{{ .Title }}</h1>
+    
+    {{ range .Pages }}
+       <div>
+        {{ with .Params.screengrab }}
+          {{ $url := . }}
+             {{ with resources.GetRemote $url }}
+               {{ with .Resize "400x" }}
+                 <img src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="">
+               {{ end }}
+              {{ end }}
+        {{ end }}
+         
+         <p>{{ .Params.title }}</p>
+         <p>{{ .Params.publishDate | time.Format "January 2006" }}</p>
+         <button><a style="text-decoration: none;" href="{{ .RelPermalink }}">READ THIS ISSUE</a></button>
+
+
+
+         {{ .Summary }}
+         
+       </div>
+    {{ end }}
+  </div>
+  </div>
+</div>
+{{ end }}

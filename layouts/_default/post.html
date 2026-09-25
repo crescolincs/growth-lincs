@@ -1,0 +1,33 @@
+{{ define "main" }}
+{{$imagedomain := string .Site.Params.imagedomain }}
+<main id="main" class="sector_{{ .Params.sector}}">
+    <style>.sector-mid{color: var(--sector-{{ .Params.sector }}-mid);}.sector-dark{color: var(--sector-{{ .Params.sector }}-dark);}img{max-width: 100%; height: auto;}</style>
+<section class="section_article-header mb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                {{ with .Params.categories }}
+                <p class="sector text-sector-mid"><a class="text-sector-mid" href="/articles">{{ . }} </a></p>
+                {{ end }}
+                <h1 class="text-sector-mid">{{ .Params.title}}</h1>
+                <h2 class="text-sector-mid">{{ .Params.sub_heading}}</h2>
+                <div class="img-wrapper">
+                    <img src={{ replace .Params.image "upload/" "upload/w_1200/q_auto,f_auto/" }} alt="" />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section_article-text">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-8">
+                <div class="text-dark-blue mb-5 contentblock">{{ .Content | safeHTML }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</main>
+{{ end }}

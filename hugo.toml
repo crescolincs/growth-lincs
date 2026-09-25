@@ -18,6 +18,10 @@ title = 'Lincolnshire is the UK location of choice for investing businesses in h
 [sitemap]
   excludedKinds = ["term", "taxonomy"]
 
+[security]
+  [security.http]
+    urls = [".*"]
+
 #Update hugo modules (in our case the theme)$> hugo mod get -u 
 
 #dev site https://dev.robotics-8an.pages.dev
