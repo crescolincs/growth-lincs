@@ -240,12 +240,19 @@
   // ("ebulletins") if your config.yml uses a different name.
  
   var ebulletinStyles = [
+    '.growth_ebulletin_list .card-wrapper{display: flex; justify-content: center; align-items: center;height:100vh;}', 
     '.growth_ebulletin_list .card { height: 96%; }',
     '.growth_ebulletin_list .card-header { padding: 2rem; }',
     '.growth_ebulletin_list .card-header img { width: 100%; }',
     '.growth_ebulletin_list a { text-decoration: none; }',
     '.growth_ebulletin_list .card-body { display: flex; flex-direction: column; }',
     '.growth_ebulletin_list .card-body h3 { font-size: 1.25rem; text-align: center; }',
+    '.growth_ebulletin_list .card-wrapper { width: 100%; max-width: calc(400px + 4rem); }',
+    '.growth_ebulletin_list .card, .growth_ebulletin_list .card-body { min-width: 0; }',
+    '.growth_ebulletin_list .card-foot{display: flex;flex-direction: row; justify-content: space-between; align-items: center;}',
+    '.growth_ebulletin_list .date{ font-size: 0.7rem }',
+    '.growth_ebulletin_list .card-button{ text-align:center;   background: #9fc41f;  border:none;  padding: 0.3rem;}',
+    '.growth_ebulletin_list .card-button a{ color: #ffffff;}',
     '.growth_ebulletin_list .not-displayed-notice { color: #b02a37; font-weight: bold; margin-bottom: 1rem; }'
   ].join('\n');
  
@@ -267,6 +274,17 @@
       var screengrab      = resolveImage(params.get('screengrab'), getAsset);
       var linkToEBulletin = params.get('linkToEBulletin') || '#';
       var thumbSrc         = transformScreengrab(screengrab);
+      var publishDate     = params.get('publishDate');
+ 
+      // Mirrors {{ .Params.publishDate.Format "January 2006" }}
+      var formattedDate = '';
+      if (publishDate) {
+        try {
+          formattedDate = new Date(publishDate).toLocaleDateString('en-GB', {
+            month: 'long', year: 'numeric'
+          });
+        } catch(e) { formattedDate = String(publishDate); }
+      }
  
       return h('main', { id: 'main' },
         h('style', {}, ebulletinStyles),
@@ -276,7 +294,7 @@
               ? h('p', { className: 'not-displayed-notice' },
                   'This entry has "display" turned off and will not appear on the live list page.')
               : null,
-            h('div', { className: 'col-12 col-lg-4 card-wrapper' },
+            h('div', { className: 'card-wrapper' },
               h('a', { href: linkToEBulletin, className: 'external' },
                 h('div', { className: 'card shadow' },
                   h('div', { className: 'card-header' },
@@ -285,14 +303,22 @@
                       : null
                   ),
                   h('div', { className: 'card-body justify-content-between' },
-                    h('h3', { className: 'm-0 text-green' }, title)
+                    h('div', {},
+                      title + ' - ' + params.get('eBulletinDescription')
+                    ),
+                     h('div', { className: 'card-foot' },
+                    formattedDate + ' ',
+                    h('button', { className: 'card-button' },
+                      h('a', { href: linkToEBulletin, className: 'external' }, 'Read Bulletin')
+                    )
+                  )
                   )
                 )
               )
             )
           )
         )
-      );
+      )
     }
   });
  

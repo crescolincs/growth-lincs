@@ -1,16 +1,22 @@
 {{ define "main" }}
 {{$imagedomain := string .Site.Params.imagedomain }}
-<main id="main" class="sector_{{ .Params.sector}} post-template">
-    <style>.sector-mid{color: var(--sector-{{ .Params.sector }}-mid);}.sector-dark{color: var(--sector-{{ .Params.sector }}-dark);}img{max-width: 100%; height: auto;}</style>
+<style>
+    .title-color{
+    color: #9fc41f;
+    } 
+</style>
+<main id="main" class="sector_agrifood post-template growth-links">
+    <style>.sector-mid{color: var(--sector-agrifood-mid);}.sector-dark{color: var(--sector-agrifood-dark);}img{max-width: 100%; height: auto;}</style>
 <section class="section_article-header mb-5">
     <div class="container">
         <div class="row">
             <div class="col-12">
-                {{ with .Params.categories }}
-                <p class="sector text-sector-mid"><a class="text-sector-mid" href="/articles">{{ . }} </a></p>
-                {{ end }}
-                <h1 class="text-sector-mid">{{ .Params.title}}</h1>
-                <h2 class="text-sector-mid">{{ .Params.sub_heading}}</h2>
+                {{ if .Params.categories }}
+                    {{ partial "category-links.html" . }}
+                {{ end }} 
+
+                <h1 class="title-color">{{ .Params.title}}</h1>
+                <h2 class="title-color">{{ .Params.sub_heading}}</h2>
                 <div class="img-wrapper">
                     <img src={{ replace .Params.image "upload/" "upload/w_1200/q_auto,f_auto/" }} alt="" />
                 </div>

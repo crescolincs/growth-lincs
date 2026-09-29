@@ -1,0 +1,20 @@
+<section class="section_header-50-50 local-hero">
+    <div class="container">
+        <div class="row d-flex flex-row ">
+            <div class=" col-12 col-lg-5 pe-lg-4 d-flex flex-column justify-content-center align-items-center ">
+                <h1 class="text-sector-mid">{{ .Params.hero.heading }}</h1>
+                <div class="p-large">{{ .Params.hero.blurb | markdownify}}</div>
+            {{ with resources.Get "images/LincsCCLogo.png" }}
+                 <img src="{{ .RelPermalink }}" alt="Lincolnshire County Council Logo" width="303px">
+            {{ end }}
+            </div>
+            <div class="col-12 col-lg-7 mt-sm-5">
+                <div class="img-wrapper pl10">
+                    <img src='{{ replace .Params.hero.heroImg "upload/" "upload/w_750/q_auto,f_auto/" }}' alt="Sector image">
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

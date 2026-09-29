@@ -1,0 +1,135 @@
+{{ define "main" }}
+{{$imagedomain := string .Site.Params.imagedomain }}
+<style>
+
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 360px));
+  grid-template-rows: auto 1fr auto; 
+  gap: 20px;
+}
+@media(min-width: 360px) {
+  .dashboard{
+      grid-template-columns: 340px ;
+  }
+}
+@media(min-width: 375px) {
+  .dashboard{
+      grid-template-columns: 354px ;
+  }
+}
+@media(min-width: 393px) {
+  .dashboard{
+      grid-template-columns: 368px ;
+  }
+}
+@media(min-width: 412px) {
+  .dashboard{
+      grid-template-columns: 390px ;
+  }
+}
+@media(min-width: 440px) {
+  .dashboard{
+      grid-template-columns: 420px ;
+  }
+}
+@media(min-width: 576px) {
+  .dashboard{
+      grid-template-columns: 516px ;
+  }
+}
+
+@media(min-width: 768px) {
+  .dashboard{
+      grid-template-columns: 340px 340px;
+  }
+}
+
+@media(min-width: 992px) {
+  .dashboard{
+      grid-template-columns: 460px 460px;
+  }
+}
+
+@media(min-width: 1200px) {
+  .dashboard{
+      grid-template-columns: 360px 360px 360px;
+  }
+}
+
+@media(min-width: 1400px) {
+  .dashboard{
+      grid-template-columns: 390px 390px 390px;
+  }
+}
+
+
+.card {
+  display: grid;
+  /* Span across all 4 rows defined in the parent container */
+  grid-row: span 3;
+  /* Inherit the row tracks from the parent grid */
+  grid-template-rows: subgrid;
+}
+img {
+  padding:0;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  width: 100%;
+}
+.card-header{ 
+    padding: 0; /*var(--bs-card-cap-padding-x)*/
+    background-color: #fff;
+    border-bottom: none;
+    height: 15.625rem;
+}
+.card-footer {
+  background-color: #fff;
+  border-top: none;
+    a{
+    text-decoration: none;
+}
+}
+    .title-color{
+    color: #9fc41f;
+    } 
+</style>
+<main id="main" class="sector_agrifood page_home">
+    <div style="width: 100%; height:20vh; background-color: #1A1533;  display: grid; place-items: center;margin-bottom:2rem;"><h1 style="color:white; padding: 0px; margin: 0px;">{{ .Title }}</h1></div>
+<section class="xsection_articles-preview growth-links">
+    
+  <div class="container">
+      <div class="xrow dashboard">
+
+            {{ range .Pages }}
+           <!-- <div class="position-relative sector_{{.Params.sector}}"> -->
+                <div class="card shadow">
+                    <div class="card-header">
+                        {{ $url2resize := .Params.image  }}
+                           {{ $transformedUrl := replaceRE `v\d+` "f_auto,q_auto,w_420" $url2resize }}
+                             <img loading="lazy" src="{{ $transformedUrl }}" alt="{{ .Params.title }}">
+                        
+                    </div>
+                    <div class="card-body">
+                          {{ if .Params.categories }}
+                             {{ partial "category-links.html" . }}
+                          {{ end }}    
+                        <!--<p class="text-sector-mid"><small>{{ .Params.sector | strings.FirstUpper }}</small></p>-->
+                        <h4 class="title-color">
+                            {{ .Params.title}}
+                        </h4>
+                        <div>{{ .Summary | truncate 100 }}</div>
+                    </div>
+                    <div class="card-footer d-flex justify-content-end">
+                       <a href="{{ .RelPermalink }}">read article</a>
+                    </div>
+                </div>
+            <!--</div>-->
+           {{ end }}
+
+      </div>
+  </div>
+</section> 
+</main>   
+{{ end }}

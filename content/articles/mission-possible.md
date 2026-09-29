@@ -2,8 +2,7 @@
 title: Mission Possible
 sub_heading: All we can do to help you
 sector: agrifood
-type: article
-layout: post
+nolayout: post
 author:
   - Kate Storey
 categories:
