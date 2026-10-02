@@ -1,0 +1,140 @@
+
+<style>
+  h1,h2,h3,h4{text-transform: uppercase;}
+
+
+h1.text-sector-mid,.p-large {
+color:#fff}
+
+.section_header-50-50 .img-wrapper img {
+  width:98vw;
+object-fit:fill}
+
+.bgblack {
+  background-color:#2d3137;
+padding:0}
+
+.mt-sm-5 {
+margin-top:0 !important}
+
+.bulletin-dashboard {
+  display: grid;
+  /*grid-template-columns: repeat(auto-fit, minmax(330px, 96%));*/
+  grid-template-rows: auto 1fr auto; 
+  gap: 20px;
+}
+@media(min-width: 576px) {
+  .bulletin-dashboard{
+      grid-template-columns: /*516px*/ 100% ;
+  }
+}
+
+@media(min-width: 768px) {
+  .bulletin-dashboard{
+      /*grid-template-columns: 340px 340px;*/
+      grid-template-columns: 49% 49%;
+  }
+}
+
+@media(min-width: 992px) {
+  .bulletin-dashboard{
+      grid-template-columns: 460px 460px;
+  }
+}
+
+@media(min-width: 1200px) {
+  .bulletin-dashboard{
+      grid-template-columns: 360px 360px 360px;
+  }
+}
+
+@media(min-width: 1400px) {
+  .bulletin-dashboard{
+      grid-template-columns: 32.5% 32.5% 32.5%;
+  }
+}
+
+/* subgrid handles alignment inside a grid cell */
+
+.bulletin-card {
+  display: grid;
+  /* Span across all 4 rows defined in the parent container */
+  grid-row: span 2;
+  /* Inherit the row tracks from the parent grid */
+  grid-template-rows: subgrid;
+}
+.bulletin-card-header{
+    padding: 2rem;
+    img {width:100%}
+}
+a {
+text-decoration:none
+}
+.bulletin-card-body {
+  display:flex;
+  flex-direction:column;
+    width: 100%;
+}
+.bulletin-card-body h2 {
+  font-size:1.25rem;
+  text-align:center;
+
+}
+.bulletin-card-foot{
+  display: flex;  
+  flex-direction: row; 
+  justify-content: space-between; 
+  align-items: center;
+  margin-top: 1rem;
+}
+.bulletin-card-button {  
+  text-align:center;   
+  background: #9fc41f;  
+  border:none;  
+  padding: 0.3rem;
+  a{
+    color: white;
+   }
+}
+
+
+.download:hover {
+color:#4b83d8}
+
+</style>
+
+    <div class="container growth_ebulletin_list">
+      <h2 class="h2-large text-dark-blue">Latest Growth Journals</h2>
+      <div class="bulletin-dashboard">
+       <!-- <div class="col-12"> -->
+               
+        {{ range first 3 (where site.RegularPages "Type" "growth-journals") }}
+               {{ if .Params.display }}                  
+                       <div class="bulletin-card card shadow">
+                           <div class="card-header">
+                           {{ $url2resize := .Params.screengrab  }}
+                           {{ $transformedUrl := replaceRE `v\d+` "f_auto,q_auto,w_400,h_400,c_fill,g_north" $url2resize }}
+                             <img loading="lazy" src="{{ $transformedUrl }}" alt="{{ .Params.title }}">
+                           </div>
+                           <div class="bulletin-card-body card-body justify-content-between">
+                               <!--<h5 class="m-0 text-green">{{ .Params.title }}</h5>-->
+                               <div>{{ .Params.title }} - {{ .Params.eBulletinDescription }}</div>
+                               <div class="bulletin-card-foot card-foot">{{ .Params.publishDate.Format "January 2006" }} <button class="bulletin-card-button"><a href="{{ .Params.linkToEBulletin}}"  class="external">Read Bulletin</a></button></div>
+                               
+                           </div>
+                       </div>
+               {{ end }}
+          {{ end }}
+        <!--</div>-->
+      </div>
+            <div class="col-12 d-flex justify-content-center">
+        <a class="btn btn-primary mt-4 mb-3" href="/growth-journals/">See All Growth Journals 
+         <i class="fa-sharp fa-regular fa-arrow-right ms-3">
+            <svg fill="#fff" width="26.5" height="30" viewBox="0 0 32 24" xmlns="http://www.w3.org/2000/svg"><path d="M5.975 17.504l14.287.001-6.367 6.366L16.021 26l10.004-10.003L16.029 6l-2.128 2.129 6.367 6.366H5.977z"></path></svg>
+         </i>
+        </a>
+    </div>
+    </div>
+
+
+

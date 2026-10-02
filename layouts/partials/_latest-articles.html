@@ -1,5 +1,4 @@
-{{ define "main" }}
-{{$imagedomain := string .Site.Params.imagedomain }}
+
 <style>
 h1,h2,h3,h4{text-transform: uppercase;}
 .dashboard {
@@ -97,26 +96,26 @@ img {
     } 
 </style>
 
-<main id="main" class="sector_agrifood page_home">
-<div style="width: 100%;  background-color: #1A1533;  display: grid; place-items: center; padding-block:1.5rem;margin-bottom:1rem;">
-  <h1 style="color:white; padding: 0px; margin: 0px;">{{ .Title }}</h1>
-</div>
-<section class="growth-links">
+    
   <div class="container">
-      <div class="xrow dashboard ZAPZAP">
+    <h2 class="h2-large text-dark-blue">Latest Articles</h2>
+      <div class="xrow dashboard">
 
-            {{ range .Pages }}
-            
+         
+         {{ range first 3 (where site.RegularPages "Type" "articles") }}
+           <!-- <div class="position-relative sector_{{.Params.sector}}"> -->
                 <div class="card shadow">
                     <div class="card-header">
                         {{ $url2resize := .Params.image  }}
-                        {{ $transformedUrl := replaceRE `v\d+` "f_auto,q_auto,w_420" $url2resize }}
-                        <img loading="lazy" src="{{ $transformedUrl }}" alt="{{ .Params.title }}">
+                           {{ $transformedUrl := replaceRE `v\d+` "f_auto,q_auto,w_420" $url2resize }}
+                             <img loading="lazy" src="{{ $transformedUrl }}" alt="{{ .Params.title }}">
+                        
                     </div>
                     <div class="card-body">
-                          {{ if .Params.categories }}
+                          <!--{{ if .Params.categories }}
                              {{ partial "category-links.html" . }}
-                          {{ end }}    
+                          {{ end }} -->   
+                        <!--<p class="text-sector-mid"><small>{{ .Params.sector | strings.FirstUpper }}</small></p>-->
                         <h4 class="title-color">
                             {{ .Params.title}}
                         </h4>
@@ -126,11 +125,10 @@ img {
                        <a href="{{ .RelPermalink }}">read article</a>
                     </div>
                 </div>
-            
+            <!--</div>-->
            {{ end }}
 
       </div>
+      <div class="col-12 d-flex justify-content-center"><a class="btn btn-primary mt-4" href="/contact">See All Articles <i xxxclass="fa-sharp fa-regular fa-arrow-right ms-3"><svg fill="#fff" width="26.5" height="30" viewBox="0 0 32 24" xmlns="http://www.w3.org/2000/svg"><path d="M5.975 17.504l14.287.001-6.367 6.366L16.021 26l10.004-10.003L16.029 6l-2.128 2.129 6.367 6.366H5.977z"></path></svg></i></a></div>
   </div>
-</section> 
-</main>   
-{{ end }}
+ 

@@ -1,0 +1,185 @@
+{{ define "main" }}
+<style>
+  h1,h2,h3,h4{text-transform: uppercase;}
+.section_header-50-50 {
+  background-color:#2d3137;
+padding:0}
+
+h1.text-sector-mid,.p-large {
+color:#fff}
+
+.section_header-50-50 .img-wrapper img {
+  width:98vw;
+object-fit:fill}
+
+.bgblack {
+  background-color:#2d3137;
+padding:0}
+
+.mt-sm-5 {
+margin-top:0 !important}
+
+.dashboard {
+  display: grid;
+  /*grid-template-columns: repeat(auto-fit, minmax(330px, 96%));*/
+  grid-template-rows: auto 1fr auto; 
+  gap: 20px;
+}
+@media(min-width: 576px) {
+  .dashboard{
+      grid-template-columns: /*516px*/ 100% ;
+  }
+}
+
+@media(min-width: 768px) {
+  .dashboard{
+      /*grid-template-columns: 340px 340px;*/
+      grid-template-columns: 49% 49%;
+  }
+}
+
+@media(min-width: 992px) {
+  .dashboard{
+      grid-template-columns: 460px 460px;
+  }
+}
+
+@media(min-width: 1200px) {
+  .dashboard{
+      grid-template-columns: 360px 360px 360px;
+  }
+}
+
+@media(min-width: 1400px) {
+  .dashboard{
+      grid-template-columns: 32.5% 32.5% 32.5%;
+  }
+}
+
+/* subgrid handles alignment inside a grid cell */
+
+.card {
+  display: grid;
+  /* Span across all 4 rows defined in the parent container */
+  grid-row: span 2;
+  /* Inherit the row tracks from the parent grid */
+  grid-template-rows: subgrid;
+}
+.card-header{
+    padding: 2rem;
+    img {width:100%}
+}
+a {
+text-decoration:none
+}
+.card-body {
+  display:flex;
+  flex-direction:column;
+    width: 100%;
+}
+.card-body h2 {
+  font-size:1.25rem;
+  text-align:center;
+
+}
+.card-foot{
+  display: flex;  
+  flex-direction: row; 
+  justify-content: space-between; 
+  align-items: center;
+  margin-top: 1rem;
+}
+.card-button {  
+  text-align:center;   
+  background: #9fc41f;  
+  border:none;  
+  padding: 0.3rem;
+  a{
+    color: white;
+   }
+}
+
+
+.download:hover {
+color:#4b83d8}
+
+</style>
+<div style="width: 100%; background-color: #1A1533;  display: grid; place-items: center; padding-block:1.5rem;margin-bottom:1rem;">
+  <h1 style="color:white; padding: 0px; margin: 0px;">Growth Journals</h1></div>
+    <div class="container growth_ebulletin_list">
+      <div class="row dashboard">
+       <!-- <div class="col-12"> -->
+               
+        {{ range .Pages }}
+               {{ if .Params.display }}                  
+                       <div class="card shadow">
+                           <div class="card-header">
+                           {{ $url2resize := .Params.screengrab  }}
+                           {{ $transformedUrl := replaceRE `v\d+` "f_auto,q_auto,w_400,h_400,c_fill,g_north" $url2resize }}
+                             <img loading="lazy" src="{{ $transformedUrl }}" alt="{{ .Params.title }}">
+                           </div>
+                           <div class="card-body justify-content-between">
+                               <!--<h5 class="m-0 text-green">{{ .Params.title }}</h5>-->
+                               <div>{{ .Params.title }} - {{ .Params.eBulletinDescription }}</div>
+                               <div class="card-foot">{{ .Params.publishDate.Format "January 2006" }} <button class="card-button"><a href="{{ .Params.linkToEBulletin}}"  class="external">Read Bulletin</a></button></div>
+                               
+                           </div>
+                       </div>
+               {{ end }}
+          {{ end }}
+        <!--</div>-->
+      </div>
+         <div style="margin-inline: auto;margin-block: 1rem;background-color: #fff;padding: 1rem;" class="col-xs-12 col-sm-12 col-md-4">
+							<div class="main-content">
+									
+									
+										<p class="">
+											To receive limited and relevant updates on our events and activity, and to sign up to receive our newsletters, please register here.  
+										</p>
+
+									<div class="panel panel-default mt20">
+									<div class="panel-heading">
+								        <h3 class="h6 mt10 mb0">Subscribe for Growth Journal updates</h3>
+								    </div>
+										<form class="js-cm-form form-horizontal form-on-white form-lined pt30 pb20" id="subForm" action="https://www.createsend.com/t/subscribeerror?description=" method="post" data-id="5B5E7037DA78A748374AD499497E309EBC66040AC0C5C063962A423AB9E910C4F8FF5B72C359D9FE40239AD4214144B2639F7F8394ED5B4E8442EE49477FFC3C">
+                       <div class="form-group form-row">
+                           <label for="fieldName" class="col-xs-12 col-sm-3 control-label mt10">Name:</label>
+                           <div class="col-xs-12 col-sm-9">
+                               <input aria-label="Name" id="fieldName" name="cm-name" class="form-control">
+                           </div>
+                       </div>
+                   
+                       <div class="form-group form-row">
+                           <label for="fieldEmail" class="col-xs-12 col-sm-3 control-label mt10">Email:</label>
+                           <div class="col-xs-12 col-sm-9">
+                               <input class="js-cm-email-input qa-input-email sc-gZMcBi dshyOS form-control" autocomplete="Email" id="fieldEmail" maxlength="200" name="cm-bdikduy-bdikduy" required="" type="email">
+                           </div>
+                       </div>
+                   
+                   
+                       <div class="checkbox pl50" style="position: absolute">
+                           <label for="fielddjtljjjl" style="visibility: hidden; height: 0px;">
+                               <input type="checkbox" id="fielddjtljjjl" maxlength="200" name="cm-f-djtljjjl" value="yes" checked="checked" style="visibility: hidden">Sign-up to receive LEP updates
+                           </label>
+                       </div>
+                   
+                       <div class="well well-data well-gdpr">
+                           <h3><i class="fa fa-user"></i>Your Personal Data</h3>
+                           <p>By submitting any enquiries via this part of our website, you are granting UKFV
+                               permission to store and process your data as according to our Privacy Policy which you can find <a href="https://www.ukfoodvalley.co.uk/privacy-policy" target="_blank">here.</a> <strong>Your information will never be sold on to any third parties</strong>, and the data you submit here will only be used in relation to your enquiry.</p>
+                       </div>
+                       <div class="form-group">
+                           <div class="col-xs-12 pl45">
+                               <button class="btn btn-primary btn-blue mt20 signup-btn" type="submit">Subscribe <i class="ti-arrow-right"></i></button>
+                           </div>
+                       </div>
+                    </form>
+                    <script type="text/javascript" src="https://js.createsend1.com/javascript/copypastesubscribeformlogic.js"></script>
+									</div>
+							</div>
+						</div>
+       
+    </div>
+{{ end }}
+
+

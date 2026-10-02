@@ -69,7 +69,6 @@ collections:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Sub Heading", name: "sub_heading", widget: "string", required: false }
       - {label: "Type", name: "type", widget: "hidden", default: "article"} 
-      - {label: "Layout", name: "layout", widget: "hidden", default: "post"}
 
       - label: "Author"
         name: "author"
@@ -110,14 +109,14 @@ collections:
       - {label: "SEO Description", name: "SEODesc", widget: "text", required: false} 
 
   # ---------------------------------------------------------------
-  # E-BULLETINS
+  # GROWTH JOURNALS
   # ---------------------------------------------------------------
-  - name: "ebulletins"
-    label: "E-Bulletins"
-    folder: "content/ebulletins"
+  - name: "growth-journals"
+    label: "Growth Journals"
+    folder: "content/growth-journals"
     create: true
     slug: "{{slug}}"
-    path: "{{slug}}/index"
+    path: "{{slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Screengrab", name: "screengrab", widget: "image" }

@@ -1,46 +1,45 @@
-{{ define "main" }}
-{{$imagedomain := string .Site.Params.imagedomain }}
+
 <style>
 h1,h2,h3,h4{text-transform: uppercase;}
-.dashboard {
+.article-dashboard {
   display: grid;
   /*grid-template-columns: repeat(auto-fit, minmax(330px, 96%));*/
   grid-template-rows: auto 1fr auto; 
   gap: 20px;
 }
 @media(min-width: 576px) {
-  .dashboard{
+  .article-dashboard{
       grid-template-columns: /*516px*/ 100% ;
   }
 }
 
 @media(min-width: 768px) {
-  .dashboard{
+  .article-dashboard{
       /*grid-template-columns: 340px 340px;*/
       grid-template-columns: 49% 49%;
   }
 }
 
 @media(min-width: 992px) {
-  .dashboard{
+  .article-dashboard{
       grid-template-columns: 460px 460px;
   }
 }
 
 @media(min-width: 1200px) {
-  .dashboard{
+  .article-dashboard{
       grid-template-columns: 360px 360px 360px;
   }
 }
 
 @media(min-width: 1400px) {
-  .dashboard{
+  .article-dashboard{
       grid-template-columns: 32.5% 32.5% 32.5%;
   }
 }
 
 
-.card {
+.article-card {
   display: grid;
   /* Span across all 4 rows defined in the parent container */
   grid-row: span 3;
@@ -54,13 +53,13 @@ img {
   object-fit: cover;
   width: 100%;
 }
-.card-header{ 
+.article-card-header{ 
     padding: 0; /*var(--bs-card-cap-padding-x)*/
     background-color: #fff;
     border-bottom: none;
     height: 15.625rem;
 }
-.card-footer {
+.article-card-footer {
   background-color: #fff;
   border-top: none;
     a{
@@ -73,35 +72,41 @@ img {
     .btn.btn-primary {
     background-color: #9fc41f;}
 </style>
-<main id="main" class="sector_film page_home">
-    <div style="width: 100%; background-color: #1A1533;display: grid; place-items: center; padding-block:1.5rem;margin-bottom:1rem;">
-      <h1 style="color:white; padding: 0px; margin: 0px;">{{ .Title }}</h1></div>
-<section class="xsection_articles-preview growth-links">
+
     
   <div class="container section_growth-sector-previews">
-      <div class="dashboard">
+    <h2 class="h2-large text-dark-blue">Latest Articles</h2>
+      <div class="article-dashboard">
 
-            {{ range .Pages }}
-                <div class="card shadow">
-                    <div class="card-header">
+         
+         {{ range first 3 (where site.RegularPages "Type" "articles") }}
+
+                <div class="article-card card shadow">
+                    <div class="article-card-header card-header ">
                            {{ $url2resize := .Params.image  }}
                            {{ $transformedUrl := replaceRE `v\d+` "f_auto,q_auto,w_420" $url2resize }}
                              <img loading="lazy" src="{{ $transformedUrl }}" alt="{{ .Params.title }}">
                     </div>
-                    <div class="card-body">
+                    <div class="article-card-body card-body">
                         <h3><a class="full-card-click arrow-link text-sector-mid text-decoration-none" href="{{.RelPermalink }}">{{ .Params.title }}</a></h3>
                         <div>{{ .Summary | truncate 100 }}</div>
                     </div>
-                    <div class="card-footer d-flex justify-content-end">
+                    <div class="article-card-footer card-footer d-flex justify-content-end">
                         <i class="fa-sharp fa-regular fa-arrow-right text-sector-mid">
                             <svg width="28.183" height="24" class="arrow-clr-growth" viewBox="0 0 1.1273 .96" xmlns="http://www.w3.org/2000/svg"><path d="m0 .55219.80328 48e-6-.35798.30557.11953.10219.56247-.48014-.56202-.47986-.11965.10219.35798.30557h-.80351z" stroke-width=".05195"></path></svg>
                         </i>
                     </div>
                 </div>
+
            {{ end }}
 
       </div>
+      <div class="col-12 d-flex justify-content-center">
+        <a class="btn btn-primary mt-4 mb-3" href="/articles/">See All Articles 
+         <i class="fa-sharp fa-regular fa-arrow-right ms-3">
+            <svg fill="#fff" width="26.5" height="30" viewBox="0 0 32 24" xmlns="http://www.w3.org/2000/svg"><path d="M5.975 17.504l14.287.001-6.367 6.366L16.021 26l10.004-10.003L16.029 6l-2.128 2.129 6.367 6.366H5.977z"></path></svg>
+         </i>
+        </a>
+    </div>
   </div>
-</section> 
-</main>   
-{{ end }}
+ 

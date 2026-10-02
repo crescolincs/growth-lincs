@@ -1,18 +1,22 @@
 <section class="section_header-50-50 local-hero">
+    <style>
+        .btn.btn-submit{background-color:#9fc41f;} 
+        h1{font-size:3rem!important;}
+        h1,h2,h3{color: #9fc41f!important;}
+    </style>
     <div class="container">
-        <div class="row d-flex flex-row ">
-            <div class=" col-12 col-lg-5 pe-lg-4 d-flex flex-column justify-content-center align-items-center ">
-                <h1 class="text-sector-mid">{{ .Params.hero.heading }}</h1>
+        <div class="row xd-flex flex-row " style="">
+            <div class=" col-12 col-lg-5 pe-lg-4 xd-flex flex-column justify-content-left align-items-center ">
+                <h1 class="growth-heading">{{ .Params.hero.heading }}</h1>
                 <div class="p-large">{{ .Params.hero.blurb | markdownify}}</div>
-            {{ with resources.Get "images/LincsCCLogo.png" }}
-                 <img src="{{ .RelPermalink }}" alt="Lincolnshire County Council Logo" width="303px">
-            {{ end }}
-            </div>
-            <div class="col-12 col-lg-7 mt-sm-5">
-                <div class="img-wrapper pl10">
-                    <img src='{{ replace .Params.hero.heroImg "upload/" "upload/w_750/q_auto,f_auto/" }}' alt="Sector image">
 
-                </div>
+
+            <div style="max-width:300px;margin-bottom:2rem;">
+                 <img src="https://res.cloudinary.com/growthlincs/image/upload/w_200/lcc-logo.svg" alt="Lincolnshire County Council Logo" width="203px">
+            </div>
+            </div>
+            <div class="col-12 col-lg-7 mt-sm-5" style="background-image: url('{{ .Params.hero.heroImg }}'); background-size: cover; background-position: center; height: 100%; min-height: 600px; ">
+                
             </div>
 
         </div>

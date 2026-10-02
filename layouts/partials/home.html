@@ -1,0 +1,12 @@
+<main id="main" class="sector_film page_home chatterbox">
+    {{ if .Params.hero.display }}
+      {{ partial "hero.html" . }}
+    {{ end }}
+
+    {{ partial "latest-articles.html" . }}
+
+    {{ partial "latest-growth-journals.html" . }}
+
+    
+
+</main>

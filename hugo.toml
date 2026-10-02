@@ -14,6 +14,14 @@ title = 'Lincolnshire is the UK location of choice for investing businesses in h
   category = "categories"
   author = "authors"
 
+#[markup]
+#  [markup.goldmark]
+#    [markup.goldmark.renderer]
+#      unsafe = true
+#    [markup.goldmark.parser]
+#      [markup.goldmark.parser.attribute]
+#        block = true
+#        title = true
 
 [sitemap]
   excludedKinds = ["term", "taxonomy"]

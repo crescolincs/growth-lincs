@@ -1,9 +1,11 @@
 {{ define "main" }}
 {{$imagedomain := string .Site.Params.imagedomain }}
 <style>
+    h1,h2,h3,h4{text-transform: uppercase;}
     .title-color{
-    color: #9fc41f;
+    color: #28347E;
     } 
+
 </style>
 <main id="main" class="sector_agrifood post-template growth-links">
     <style>.sector-mid{color: var(--sector-agrifood-mid);}.sector-dark{color: var(--sector-agrifood-dark);}img{max-width: 100%; height: auto;}</style>
@@ -29,7 +31,9 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 col-lg-8">
-                <div class="text-dark-blue mb-5 contentblock">{{ .Content | safeHTML }}
+                <div class="text-dark-blue mb-5 contentblock">
+                    <p>{{ .Params.intro }}</p>
+                    {{ .Content | safeHTML }}
                 </div>
             </div>
         </div>
