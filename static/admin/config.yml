@@ -1,12 +1,5 @@
 local_backend: true
 
-#backend:
-#  name: github
-#  repo: crescolincs/growth-lincs #path to your GitHub repository
-#  branch: main
-#  base_url: https://smc.agrifood.pages.dev #url for Oauth app on Github Developer settings  auth_endpoint: /api/auth
-#  show_preview_links: true
-
 backend:
   name: turbo-github 
   turbo_site_id: 3adc1379-6bf8-48ea-80da-0eaab533784e
