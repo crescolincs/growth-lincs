@@ -1,7 +1,6 @@
 ---
 title: All this Growth is making us dizzy
 sub_heading: Slow down and take a breath
-type: article
 author:
   - The Editor
 categories:
