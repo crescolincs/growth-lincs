@@ -51,7 +51,7 @@ Susanna noted that the facilities allow her to use new technological research me
 
 Both students agreed that they would recommend studying at the AFCE, as there has been a massive improvement compared to the old facilities. “It is a place to exchange ideas, interact and collaborate, and even the scenery and environment surrounding the centre is beautiful…it is very peaceful!”, said Susanna and Hamida.
 
-![Abbey Tyrrell and her tutor Karen Deans](https://res.cloudinary.com/growthlincs/image/upload/v1790841012/NCFM_Lab_Teaching_1.jpg "Abbey Tyrrell, a Level Three Food Technology Apprentice, and her tutor Karen Deans working together")
+![Abbey Tyrrell and her tutor Karen Deans](https://res.cloudinary.com/growthlincs/image/upload/v1790841012/NCFM_Lab_Teaching_1.jpg "Abbey Tyrrell, a Level Three Food Technology Apprentice, and her tutor Karen Deans working")
 
 We also spoke to Abbey Tyrrell, a Level Three Food Technology Apprentice, and her tutor Karen Deans, Lecturer in Manufacturing at the centre.
 
