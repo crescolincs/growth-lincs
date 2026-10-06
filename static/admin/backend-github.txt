@@ -5,3 +5,10 @@ backend:
   base_url: https://smc.agrifood.pages.dev #url for Oauth app on Github Developer settings  
   auth_endpoint: /api/auth
   show_preview_links: true
+
+
+  backend:
+    name: turbo-github # or turbo-gitlab
+    turbo_site_id: 39731a79-4722-495a-8652-d3fec0d24d0b
+    branch: main # optional
+    show_preview_links: true
