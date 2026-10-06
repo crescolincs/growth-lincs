@@ -1,6 +1,5 @@
 {{ define "main" }}
 {{$imagedomain := string .Site.Params.imagedomain }}
-
 <style>
 h1,h2,h3,h4{text-transform: uppercase;}
 .dashboard {
@@ -75,16 +74,20 @@ img {
     background-color: #9fc41f;}
 </style>
 
-<main id="main" class="sector_agrifood page_home">
-<div style="width: 100%;  background-color: #1A1533;  display: grid; place-items: center; padding-block:1.5rem;margin-bottom:1rem;">
-  <h1 style="color:white; padding: 0px; margin: 0px;">{{ .Title }}</h1>
+<main id="main" class="sector_film page_home">
+  <div style="width: 100%;  background-color: #1A1533;  display: grid; place-items: center; padding-block:1.5rem;margin-bottom:1rem;">
+    {{ if eq .Title "Case Study"}}
+      <h1 style="color:white; padding: 0px; margin: 0px;">Case Studies</h1>
+    {{ else }}
+      <h1 style="color:white; padding: 0px; margin: 0px;">{{ .Title }} Articles</h1> 
+  {{ end }}
 </div>
 <section class="growth-links">
-  <div class="container">
-      <div class="xrow dashboard ZAPZAP">
+  <div class="container section_growth-sector-previews">
+      <div class="dashboard">
 
-            {{ range where .Pages "Params.display"  true }} 
-                <div class="card shadow">
+            {{ range where .Pages "Params.display"  true }}        
+                 <div class="card shadow">
                     <div class="card-header">
                            {{ $url2resize := .Params.image  }}
                            {{ $transformedUrl := replaceRE `v\d+` "f_auto,q_auto,w_420" $url2resize }}
@@ -100,7 +103,8 @@ img {
                         </i>
                     </div>
                 </div>
-            {{ end }}
+            
+           {{ end }}
 
       </div>
   </div>
