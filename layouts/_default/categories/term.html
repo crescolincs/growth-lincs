@@ -81,8 +81,7 @@ img {
   <div class="container">
       <div class="xrow dashboard ZAPZAP">
 
-            {{ range .Pages }}
-             {{ if .Param "display" }}
+            {{ range where .Pages "Params.display"  true }} 
                 <div class="card shadow">
                     <div class="card-header">
                         {{ $url2resize := .Params.image  }}
@@ -103,7 +102,6 @@ img {
                     </div>
                 </div>
             {{ end }}
-           {{ end }}
 
       </div>
   </div>

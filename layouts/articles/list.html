@@ -81,7 +81,7 @@ img {
   <div class="container section_growth-sector-previews">
       <div class="dashboard">
 
-            {{ range .Pages }}
+            {{ range where .Pages "Params.display"  true }} 
                 <div class="card shadow">
                     <div class="card-header">
                            {{ $url2resize := .Params.image  }}

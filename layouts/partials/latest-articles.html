@@ -79,7 +79,11 @@ img {
       <div class="article-dashboard">
 
          
-         {{ range first 3 (where site.RegularPages "Type" "articles") }}
+         {{ $articles := where site.RegularPages "Type" "articles" }}
+         {{ $displayedArticles := where $articles "Params.display" true }}
+
+         {{ if $displayedArticles }}
+             {{ range first 3 $displayedArticles }}
 
                 <div class="article-card card shadow">
                     <div class="article-card-header card-header ">
@@ -98,6 +102,9 @@ img {
                     </div>
                 </div>
 
+           {{ end }}
+           {{ else }}
+            <p>No articles available.</p>
            {{ end }}
 
       </div>
