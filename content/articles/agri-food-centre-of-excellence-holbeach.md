@@ -6,7 +6,7 @@ categories:
   - News
   - Food
 image: https://res.cloudinary.com/growthlincs/image/upload/v1790840828/NCFM_Centre_of_Excellence_1600_800_80_s_c1.jpg
-date: 2026-10-01T02:50:00Z
+date: 2026-10-01T02:50:00.000Z
 display: true
 intro: The University of Lincoln’s Holbeach campus is going from strength to
   strength as students and academics embark on their first full year of studies
@@ -51,7 +51,7 @@ Susanna noted that the facilities allow her to use new technological research me
 
 Both students agreed that they would recommend studying at the AFCE, as there has been a massive improvement compared to the old facilities. “It is a place to exchange ideas, interact and collaborate, and even the scenery and environment surrounding the centre is beautiful…it is very peaceful!”, said Susanna and Hamida.
 
-![Abbey Tyrrell and her tutor Karen Deans](https://res.cloudinary.com/growthlincs/image/upload/v1790841012/NCFM_Lab_Teaching_1.jpg "Abbey Tyrrell, a Level Three Food Technology Apprentice, and her tutor Karen Deans")
+![Abbey Tyrrell and her tutor Karen Deans](https://res.cloudinary.com/growthlincs/image/upload/v1790841012/NCFM_Lab_Teaching_1.jpg "Abbey Tyrrell, a Level Three Food Technology Apprentice, and her tutor Karen Deans working together")
 
 We also spoke to Abbey Tyrrell, a Level Three Food Technology Apprentice, and her tutor Karen Deans, Lecturer in Manufacturing at the centre.
 
