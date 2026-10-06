@@ -6,12 +6,12 @@ backend:
   branch: main
   base_url: https://smc.agrifood.pages.dev #url for Oauth app on Github Developer settings  auth_endpoint: /api/auth
   show_preview_links: true
-  
 #backend:
-#  name: turbo-github # or turbo-gitlab
-#  turbo_site_id: 3adc1379-6bf8-48ea-80da-0eaab533784e
-#  branch: main # optional
-#  show_preview_links: true
+#  name: github
+#  repo: crescolincs/growth-lincs #path to your GitHub repository
+#  branch: main
+#  base_url: https://smc.agrifood.pages.dev #url for Oauth app on Github Developer settings  auth_endpoint: /api/auth
+ # show_preview_links: true
 
 media_folder: "/images" # Folder where user uploaded files should go
 public_folder: "/images"
@@ -73,7 +73,6 @@ collections:
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Sub Heading", name: "sub_heading", widget: "string", required: false }
-      - {label: "Type", name: "type", widget: "hidden", default: "article"} 
 
       - label: "Author"
         name: "author"
