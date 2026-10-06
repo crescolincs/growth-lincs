@@ -7,7 +7,7 @@ author:
 categories:
   - News
 image: https://res.cloudinary.com/growthlincs/image/upload/v1790257997/techonthefarm.jpg
-date: 2026-10-06T13:49:00.000Z
+date: 2026-10-05T13:49:00Z
 display: true
 intro: We are very busy despite being dizzy. We have taken many breaths on our
   journey but we don't regret it.
