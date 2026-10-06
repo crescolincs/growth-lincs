@@ -8,9 +8,9 @@ local_backend: true
 #  show_preview_links: true
 
 backend:
-  name: turbo-github # or turbo-gitlab
+  name: turbo-github 
   turbo_site_id: 3adc1379-6bf8-48ea-80da-0eaab533784e
-  branch: main # optional
+  branch: main 
   show_preview_links: true
 
 media_folder: "/images" # Folder where user uploaded files should go
