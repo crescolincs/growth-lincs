@@ -18,5 +18,7 @@ hero:
          Lincolnshire County Council Growth Services deliver nationally acclaimed best practice across spatial planning, infrastructure, and community-focused growth, anchored by world-class research, manufacturing, and cross-sector industry collaborations. By connecting businesses, communities, and government, we accelerate investment and unlock economic opportunity, to create sustainable prosperity for generations to come.
   oldheroImg: https://res.cloudinary.com/lincs/image/upload/arrows.png
   heroImg: https://res.cloudinary.com/growthlincs/image/upload/f_auto/growthlincs
+  herologo: https://res.cloudinary.com/growthlincs/image/upload/w_200/lcc-logo.svg
+  intro: Lincolnshire County Council Growth Services deliver nationally acclaimed best practice across spatial planning, infrastructure, and community-focused growth, anchored by world-class research, manufacturing, and cross-sector industry collaborations. By connecting businesses, communities, and government, we accelerate investment and unlock economic opportunity, to create sustainable prosperity for generations to come.
 layout: home
 ---
