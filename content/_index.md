@@ -13,10 +13,10 @@ hero:
          
          
          Our unique geography & strategic advantage position Lincolnshire at the heart of the UK’s pioneering energy transition, sustainable food chains, water management, & defence innovations with emerging solutions to aid national security. 
-         
+
 
          Lincolnshire County Council Growth Services deliver nationally acclaimed best practice across spatial planning, infrastructure, and community-focused growth, anchored by world-class research, manufacturing, and cross-sector industry collaborations. By connecting businesses, communities, and government, we accelerate investment and unlock economic opportunity, to create sustainable prosperity for generations to come.
   oldheroImg: https://res.cloudinary.com/lincs/image/upload/arrows.png
-  heroImg: https://res.cloudinary.com/growthlincs/image/upload/growthlincs.jpg
+  heroImg: https://res.cloudinary.com/growthlincs/image/upload/f_auto/growthlincs
 layout: home
 ---
