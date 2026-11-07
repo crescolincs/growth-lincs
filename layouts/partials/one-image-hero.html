@@ -1,0 +1,25 @@
+<section class="section_header-50-50 local-hero">
+    <style>
+        .btn.btn-submit{background-color:#9fc41f;} 
+        h1{font-size:3rem!important;}
+        h1,h2,h3{color: #9fc41f!important;}
+    </style>
+    <div class="container">
+        <div class="row xd-flex flex-row " style="">
+            <div class=" col-12 col-lg-5 pe-lg-4 xd-flex flex-column justify-content-left align-items-center ">
+                <h1 class="growth-heading">{{ .Params.hero.heading }}</h1>
+                <div class="p-large">{{ .Params.hero.blurb | markdownify}}</div>
+
+
+            <div style="display:flex;align-items: flex-end;align-content: space-around;justify-content: flex-start;min-height: 120px;">
+                 <img src="{{ .Params.hero.herologo }}" alt="Lincolnshire County Council Logo" style="max-width:350px;">
+            </div>
+            </div>
+            <div class="col-12 col-lg-7 mt-sm-5" style="background-image: url('{{ .Params.hero.heroImg }}'); background-size: cover; background-position: center; height: 100%; min-height: 600px; ">
+                
+            </div>
+
+        </div>
+        <div class="mt-5"><p>{{.Params.hero.intro}}</p></div>
+    </div>
+</section>

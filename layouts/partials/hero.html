@@ -1,25 +1,109 @@
-<section class="section_header-50-50 local-hero">
-    <style>
-        .btn.btn-submit{background-color:#9fc41f;} 
-        h1{font-size:3rem!important;}
-        h1,h2,h3{color: #9fc41f!important;}
-    </style>
-    <div class="container">
-        <div class="row xd-flex flex-row " style="">
-            <div class=" col-12 col-lg-5 pe-lg-4 xd-flex flex-column justify-content-left align-items-center ">
-                <h1 class="growth-heading">{{ .Params.hero.heading }}</h1>
-                <div class="p-large">{{ .Params.hero.blurb | markdownify}}</div>
+<section class="section_header-50-50 local-hero"><style>.btn.btn-submit{background-color:#9fc41f}h1{font-size:3rem !important}h1,h2,h3{color:#9fc41f !important}
+/* ==========================================================================
+   Growth Lincolnshire hero
+   Mobile first: single column, stacked in the order
+   intro > images > logo > outro
+   ========================================================================== */
 
+.growth-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas:
+    "intro"
+    "image"
+    "logo"
+    "outro";
+  row-gap: 1.5rem;
+}
 
-            <div style="display:flex;align-items: flex-end;align-content: space-around;justify-content: flex-start;min-height: 120px;">
-                 <img src="{{ .Params.hero.herologo }}" alt="Lincolnshire County Council Logo" style="max-width:350px;">
-            </div>
-            </div>
-            <div class="col-12 col-lg-7 mt-sm-5" style="background-image: url('{{ .Params.hero.heroImg }}'); background-size: cover; background-position: center; height: 100%; min-height: 600px; ">
-                
-            </div>
+.growth-hero__intro { grid-area: intro; }
+.growth-hero__image { grid-area: image; }
+.growth-hero__logo  { grid-area: logo; align-self: end; }
+.growth-hero__outro { grid-area: outro; }
 
-        </div>
-        <div class="mt-5"><p>{{.Params.hero.intro}}</p></div>
+/* Image gallery: 2x2 grid, each cell kept at 4:3 on small screens */
+.growth-hero__image {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px;
+}
+
+.growth-hero__image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+/* Logo */
+.growth-hero__logo img {
+  display: block;
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+}
+
+/* Outro paragraph */
+.growth-hero__outro p {
+  margin-bottom: 0;
+}
+
+/* ==========================================================================
+   Desktop: matches Bootstrap's lg breakpoint (992px)
+   ========================================================================== */
+
+@media (min-width: 992px) {
+  .growth-hero {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    grid-template-rows: 1fr auto auto;   /* 1fr pushes the logo to the bottom of the gallery */
+    grid-template-areas:
+      "intro image"
+      "logo  image"
+      "outro outro";
+    gap: 2rem;
+  }
+
+  .growth-hero__image {
+    grid-template-rows: repeat(2, minmax(0, 1fr));  /* two equal rows filling the column height */
+    min-height: 600px;
+  }
+
+  .growth-hero__image img {
+    aspect-ratio: auto;   /* cells stretch to match the text column */
+  }
+}
+</style>
+<div class="container">
+  <div class="growth-hero">
+
+    <div class="growth-hero__intro">
+      <h1 class="growth-heading">{{ .Params.hero.heading }}</h1>
+      <div class="p-large">
+        {{ .Params.hero.blurb | markdownify}}
+        
+      </div>
     </div>
-</section>
+
+    {{ with .Params.hero.heroquad }}
+     <div class="growth-hero__image">
+      {{ range . }}
+       <img src="{{ .img }}"
+         width="370" height="278"
+         alt="{{ .alt }}">
+      {{ end }}
+     </div>
+    {{ end }}
+
+
+
+    <div class="growth-hero__logo">
+      <img src="{{ .Params.hero.herologo }}" alt="Lincolnshire County Council logo">
+    </div>
+
+    <div class="growth-hero__outro">
+      <p>{{.Params.hero.intro}}</p>
+    </div>
+
+  </div>
+</div></section>
