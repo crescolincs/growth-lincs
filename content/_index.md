@@ -25,7 +25,7 @@ hero:
        - img: https://res.cloudinary.com/growthlincs/image/upload/f_auto,w_370/water
          alt: Water treatment works      
   herologo: https://res.cloudinary.com/growthlincs/image/upload/w_200/lcc-logo.svg
-  intro: Lincolnshire County Council Growth Services deliver nationally acclaimed best practice across spatial planning, infrastructure, and community-focused growth, anchored by world-class research, manufacturing, and cross-sector industry collaborations. By connecting businesses, communities, and government, we accelerate investment and unlock economic opportunity, to create sustainable prosperity for generations to come.
+  intro: Lincolnshire County Council Growth Services deliver nationally acclaimed best practice across spatial planning, infrastructure, & community-focused growth, anchored by world-class research, manufacturing, & cross-sector industry collaborations. By connecting businesses, communities, & government, we accelerate investment & unlock economic opportunity, to create sustainable prosperity for generations to come.
 layout: home
 ---
 
